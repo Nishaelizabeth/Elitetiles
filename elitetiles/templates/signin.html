@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Elitetiles</title>
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="logo">
+            <h1><a href="/">Elitetiles</a></h1>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+            <div class="right-icons">
+                <a href="/wishlist" class="icon"><i class='bx bxs-heart' style="font-size: large;color: aliceblue;"></i></a>
+                <a href="/cart" class="icon"><i class='bx bxs-cart' style="font-size: large;color: aliceblue;"></i></a>
+                <div class="account-dropdown">
+                    <a href="#" class="icon"><i class='bx bxs-user' style="font-size: large;color: aliceblue;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="{% url 'signin_view' %}">Signin</a>
+                        <a href="{% url 'signup_view' %}">Signup</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sign In Section -->
+    <section class="signin">
+        <h2>Sign In</h2>
+        <form method="POST" action="{% url 'signin' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit">Sign In</button>
+        </form>
+        <p>Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Elitetiles. All Rights Reserved.</p>
+    </footer>
+    <script>
+        // Get the dropdown elements
+        const accountDropdown = document.querySelector('.account-dropdown');
+        const dropdownContent = accountDropdown.querySelector('.dropdown-content');
+    
+        // Toggle dropdown on click
+        accountDropdown.addEventListener('click', function(event) {
+            // Prevent default link action
+            dropdownContent.classList.toggle('show');
+        });
+    
+        // Close dropdown if clicked outside
+        window.addEventListener('click', function(event) {
+            if (!accountDropdown.contains(event.target)) {
+                dropdownContent.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

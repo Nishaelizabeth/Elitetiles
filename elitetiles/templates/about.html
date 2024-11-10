@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Elitetiles</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1><a href="/">Elitetiles</a></h1>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+            <div class="right-icons">
+                <a href="/wishlist" class="icon"><i class='bx bxs-heart' style="font-size: large;color: aliceblue;"></i></a>
+                <a href="/cart" class="icon"><i class='bx bxs-cart' style="font-size: large;color: aliceblue;"></i></a>
+                <div class="account-dropdown">
+                    <a href="#" class="icon"><i class='bx bxs-user' style="font-size: large;color: aliceblue;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="{% url 'signin_view' %}">Signin</a>
+                        <a href="{% url 'signup_view' %}">Signup</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="content">
+            <h2>About Elitetiles</h2>
+            <p>We are passionate about providing the highest quality tiles for your home or business. From elegant floor tiles to stylish bathroom and kitchen designs, we offer a wide range of options to suit your needs. Our mission is to bring beauty, durability, and innovation to every space.</p>
+        </div>
+
+        <!-- About the Company and Sustainability -->
+        <div class="about-details">
+            <div class="about-content">
+                <h3>About Our Company</h3>
+                <p>Founded with the vision to provide premium tiles for every kind of space, Elitetiles has grown into a trusted brand. We focus on high-quality products, excellent customer service, and offering the most innovative designs to meet the evolving needs of our customers.</p>
+            </div>
+            <div class="about-image">
+                <img src="{% static 'images/company.jpg' %}" alt="Company">
+            </div>
+        </div>
+
+        <div class="about-details reverse">
+            <div class="about-content">
+                <h3>Our Sustainability</h3>
+                <p>At Elitetiles, sustainability is at the core of everything we do. We believe in eco-friendly practices, using recycled materials, and reducing waste. Our tiles are produced using energy-efficient methods, ensuring a lower carbon footprint and a healthier planet for future generations.</p>
+            </div>
+            <div class="about-image">
+                <img src="{% static 'images/sustainability.jpg' %}" alt="Sustainability">
+            </div>
+        </div>
+
+        <!-- Most Purchased Tiles Section -->
+        <div class="most-purchased">
+            <h3>Our Most Purchased Tiles</h3>
+            <div class="tile-grid">
+                <div class="tile-card">
+                    <img src="{% static 'images/tile1.jpg' %}" alt="Tile 1">
+                    <h4>Elegant Floor Tile</h4>
+                    <p class="price">$25.00</p>
+                </div>
+                <div class="tile-card">
+                    <img src="{% static 'images/tile2.jpg' %}" alt="Tile 2">
+                    <h4>Modern Kitchen Tile</h4>
+                    <p class="price">$30.00</p>
+                </div>
+                <div class="tile-card">
+                    <img src="{% static 'images/tile3.jpg' %}" alt="Tile 3">
+                    <h4>Classic Bathroom Tile</h4>
+                    <p class="price">$22.00</p>
+                </div>
+                <div class="tile-card">
+                    <img src="{% static 'images/tile4.jpg' %}" alt="Tile 4">
+                    <h4>Stylish Wall Tile</h4>
+                    <p class="price">$18.00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Elitetiles. All Rights Reserved.</p>
+    </footer>
+    <script>
+        // Get the dropdown elements
+        const accountDropdown = document.querySelector('.account-dropdown');
+        const dropdownContent = accountDropdown.querySelector('.dropdown-content');
+    
+        // Toggle dropdown on click
+        accountDropdown.addEventListener('click', function(event) {
+            // Prevent default link action
+            dropdownContent.classList.toggle('show');
+        });
+    
+        // Close dropdown if clicked outside
+        window.addEventListener('click', function(event) {
+            if (!accountDropdown.contains(event.target)) {
+                dropdownContent.classList.remove('show');
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elitetiles - Your Tile Destination</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="logo">
+            <h1><i class='bx bxs-home'></i><a href="/">Elitetiles</a></h1>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            
+            </ul>
+            <div class="right-icons">
+                <a href="/wishlist" class="icon"><i class='bx bxs-heart' style="font-size: large;color: aliceblue;"></i></a>
+                <a href="/cart" class="icon"><i class='bx bxs-cart' style="font-size: large;color: aliceblue;"></i></a>
+                <div class="account-dropdown">
+                    <a href="#" class="icon"><i class='bx bxs-user' style="font-size: large;color: aliceblue;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="{% url 'signin_view' %}">Signin</a>
+                        <a href="{% url 'signup_view' %}">Signup</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Product Section -->
+    <section class="products">
+        <h2>Featured Tiles</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="{% static 'images/tile1.jpg' %}" alt="Tile 1">
+                <h3>Elegant Floor Tile</h3>
+                <p class="price">$25.00</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'images/tile2.jpg' %}" alt="Tile 2">
+                <h3>Modern Kitchen Tile</h3>
+                <p class="price">$30.00</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'images/tile3.jpg' %}" alt="Tile 3">
+                <h3>Classic Bathroom Tile</h3>
+                <p class="price">$22.00</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'images/tile4.jpg' %}" alt="Tile 4">
+                <h3>Stylish Wall Tile</h3>
+                <p class="price">$18.00</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Elitetiles. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Get the dropdown elements
+        const accountDropdown = document.querySelector('.account-dropdown');
+        const dropdownContent = accountDropdown.querySelector('.dropdown-content');
+    
+        // Toggle dropdown on click
+        accountDropdown.addEventListener('click', function(event) {
+            // Prevent default link action
+            dropdownContent.classList.toggle('show');
+        });
+    
+        // Close dropdown if clicked outside
+        window.addEventListener('click', function(event) {
+            if (!accountDropdown.contains(event.target)) {
+                dropdownContent.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

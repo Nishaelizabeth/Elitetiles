@@ -1,0 +1,397 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif; /* Standard font */
+    background-color: #f9f9f9; /* Light ivory background */
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    background-color: #001f3d; /* Navy Blue */
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo h1 {
+    color: #f1f1f1; /* Light ivory color */
+    font-size: 2rem;
+}
+
+header .logo a {
+    text-decoration: none;
+    color: inherit;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
+
+nav .nav-links {
+    list-style: none;
+    display: flex;
+}
+
+nav .nav-links li {
+    margin-right: 20px;
+}
+
+nav .nav-links li a {
+    text-decoration: none;
+    color: #f1f1f1; /* Ivory color */
+    font-size: 1.1rem;
+    font-weight: 500; /* Standard attractive weight */
+    transition: color 0.3s ease;
+}
+
+nav .nav-links li a:hover {
+    color: #ffcc00; /* Golden Yellow */
+}
+
+nav .right-icons {
+    display: flex;
+    align-items: center;
+}
+
+nav .right-icons a {
+    margin-left: 20px;
+}
+
+nav .right-icons img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+/* Dropdown Styles */
+.account-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none; /* Hide dropdown by default */
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: 100%;
+    right: 0;
+    border-radius: 8px;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show dropdown when hovering over the account icon */
+.account-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Product Section */
+.products {
+    padding: 40px;
+    text-align: center;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.product-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.product-card h3 {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    color: #001f3d; /* Navy blue */
+}
+
+.product-card .price {
+    color: #ffcc00; /* Golden Yellow */
+    font-size: 1.1rem;
+    margin: 10px 0;
+}
+
+.product-card button {
+    background-color: #001f3d; /* Navy Blue */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.product-card button:hover {
+    background-color: #ffcc00; /* Golden Yellow */
+}
+
+/* Footer Styles */
+footer {
+    background-color: #001f3d; /* Navy Blue */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+/* About Page - General Styles */
+.about {
+    margin-top: 50px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #001f3d; /* Navy Blue */
+    margin-bottom: 20px;
+}
+
+.about p {
+    font-size: 1.2rem;
+    color: #333;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+/* About Details Section */
+.about-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.about-details .about-content {
+    flex: 1;
+    padding: 20px;
+    text-align: left;
+}
+
+.about-details .about-image {
+    flex: 1;
+    padding: 20px;
+}
+
+.about-details img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about-details.reverse {
+    flex-direction: row-reverse;
+}
+
+.about-details h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #001f3d; /* Navy Blue */
+    margin-bottom: 15px;
+}
+
+.about-details p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Most Purchased Tiles Section */
+.most-purchased {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.most-purchased h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #001f3d; /* Navy Blue */
+    margin-bottom: 20px;
+}
+
+.tile-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.tile-card {
+    width: 250px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.tile-card:hover {
+    transform: scale(1.05);
+}
+
+.tile-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.tile-card h4 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0;
+}
+
+.tile-card .price {
+    font-size: 1.2rem;
+    color: #ffcc00; /* Golden Yellow */
+    margin-bottom: 20px;
+}
+
+/* Contact Page */
+.contact {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.contact-header h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #001f3d; /* Navy Blue */
+    margin-bottom: 20px;
+}
+
+.contact-header p {
+    font-size: 1.2rem;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+/* Contact Form */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.btn-submit {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: #001f3d; /* Navy Blue */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #ffcc00; /* Golden Yellow */
+}
+
+/* Customer Care Section */
+.customer-care {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 30px auto;
+    text-align: left;
+}
+
+.customer-care h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #001f3d; /* Navy Blue */
+    margin-bottom: 15px;
+}
+
+.customer-care p {
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .products .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-details {
+        flex-direction: column;
+    }
+
+    .tile-grid {
+        flex-direction: column;
+    }
+}
