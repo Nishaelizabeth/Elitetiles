@@ -1,0 +1,128 @@
+<!-- templates/product_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ tile.name }} - Elitetiles</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+        <!-- Header with Navigation -->
+    <header>
+        <div class="logo">
+            <h1><i class='bx bxs-home'></i><a href="/"> Elitetiles</a></h1>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'category_view' %}">Category</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+            
+            </ul>
+            <div class="right-icons">
+                <a href="/wishlist" class="icon"><i class='bx bxs-heart' style="font-size: large;color: aliceblue;"></i></a>
+                <a href="/cart" class="icon"><i class='bx bxs-cart' style="font-size: large;color: aliceblue;"></i></a>
+                <div class="account-dropdown">
+                    <a href="#" class="icon"><i class='bx bxs-user' style="font-size: large;color: aliceblue;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="{% url 'signin' %}">Signin</a>
+                        <a href="{% url 'signup' %}">Signup</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- Modal Structure -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="product-image">
+                    <img src="{{ tile.image.url }}" alt="{{ tile.name }}">
+                </div>
+                <div class="product-info">
+                    <h2>{{ tile.name }}</h2>
+                    <p>{{ tile.description }}</p>
+                    <p><strong>Price:</strong> ${{ tile.price }}</p>
+                    <div class="quantity-controls">
+                        <button id="decrease-quantity">-</button>
+                        <input type="number" id="quantity" value="1" min="1" style="width: 50px; text-align: center;">
+                        <button id="increase-quantity">+</button>
+                    </div>
+                    <button class="btn" id="add-to-cart">Add to Cart</button>
+                    <button class="btn btn-wishlist" id="add-to-wishlist">Add to Wishlist</button>
+                    <button class="btn" id="close-modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Get modal and close button
+        const modal = document.getElementById("productModal");
+        const closeModalBtn = document.getElementById("close-modal");
+        const viewProductButtons = document.querySelectorAll(".view-product-btn");
+
+        // Function to open the modal
+        function openModal(tileId) {
+            // Make an Ajax call to fetch the product details by ID (you can use Django's URL or a custom API for fetching details)
+            fetch(`/product/${tileId}/`)  // Update URL if necessary
+                .then(response => response.json())
+                .then(data => {
+                    // Update modal content
+                    document.querySelector(".product-info h2").textContent = data.name;
+                    document.querySelector(".product-info p").textContent = data.description;
+                    document.querySelector(".product-info .price").textContent = `$${data.price}`;
+                    document.querySelector(".product-image img").src = data.image_url;
+                    modal.style.display = "block"; // Show the modal
+                });
+        }
+
+        // Event listener to show the modal when "View Product" is clicked
+        viewProductButtons.forEach(button => {
+            button.addEventListener("click", function () {
+                const tileId = this.getAttribute("data-tile-id");
+                openModal(tileId);
+            });
+        });
+
+        // Close modal when clicking close button
+        closeModalBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        // Close modal if clicked outside the modal content
+        window.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+
+        // Quantity control buttons
+        document.getElementById("increase-quantity").addEventListener("click", function () {
+            let quantity = parseInt(document.getElementById("quantity").value);
+            document.getElementById("quantity").value = quantity + 1;
+        });
+
+        document.getElementById("decrease-quantity").addEventListener("click", function () {
+            let quantity = parseInt(document.getElementById("quantity").value);
+            if (quantity > 1) {
+                document.getElementById("quantity").value = quantity - 1;
+            }
+        });
+
+        // Add to Cart and Wishlist buttons
+        document.getElementById("add-to-cart").addEventListener("click", function () {
+            // Add to cart logic (e.g., Ajax or form submission)
+            alert("Product added to cart!");
+        });
+
+        document.getElementById("add-to-wishlist").addEventListener("click", function () {
+            // Add to wishlist logic (e.g., Ajax or form submission)
+            alert("Product added to wishlist!");
+        });
+    </script>
+</body>
+</html>

@@ -1,23 +1,25 @@
 <!-- templates/category.html -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ category }} Tiles</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-</head>
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Elitetiles - Your Tile Destination</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    </head>
 <body>
     <header>
-        <h1>{{ category|title }} Tiles</h1>
+        <div class="logo">
+            <h1><i class='bx bxs-home'></i><a href="/"> Elitetiles</a></h1>
+        </div>
         <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'category' category='floor' %}">Floor Tiles</a></li>
-                <li><a href="{% url 'category' category='kitchen' %}">Kitchen Tiles</a></li>
-                <li><a href="{% url 'category' category='bathroom' %}">Bathroom Tiles</a></li>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'category_view' %}">Category</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+            
             </ul>
             <div class="right-icons">
                 <a href="/wishlist" class="icon"><i class='bx bxs-heart' style="font-size: large;color: aliceblue;"></i></a>
@@ -25,26 +27,30 @@
                 <div class="account-dropdown">
                     <a href="#" class="icon"><i class='bx bxs-user' style="font-size: large;color: aliceblue;"></i></a>
                     <div class="dropdown-content">
-                        <a href="{% url 'signin_view' %}">Signin</a>
-                        <a href="{% url 'signup_view' %}">Signup</a>
+                        <a href="{% url 'signin' %}">Signin</a>
+                        <a href="{% url 'signup' %}">Signup</a>
                     </div>
                 </div>
             </div>
         </nav>
     </header>
-    <main>
-        <h2>{{ category|title }} Tiles</h2>
-        <div class="tiles">
+    <section class="products">
+        <h2 style="padding-bottom: 30px;font-family:Georgia, 'Times New Roman', Times, serif;font-size: 30px;">Top Categories</h2>
+        <div class="product-grid">
             {% for tile in tiles %}
-                <div class="tile">
+                <div class="product-card">
+                    <img src="{{ tile.image.url }}" alt="Tile" style="height: 250px;">
                     <h3>{{ tile.name }}</h3>
-                    <p>{{ tile.description }}</p>
-                    <p>Price: ${{ tile.price }}</p>
-                    <a href="{% url 'product_detail' id=tile.id %}">View Details</a>
+                    <!-- <p class="price">${{ tile.price }}</p> -->
+                    <button style="margin-top: 10px ;"><a href="{% url 'product_detail' tile.id %}">View</a></button>
                 </div>
             {% endfor %}
+            </div>
         </div>
-    </main>
+    </section>
+    <footer>
+        <p>&copy; 2024 Elitetiles. All Rights Reserved.</p>
+    </footer>
     <script>
         // Get the dropdown elements
         const accountDropdown = document.querySelector('.account-dropdown');

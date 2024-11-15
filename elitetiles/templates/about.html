@@ -13,14 +13,13 @@
     <!-- Header -->
     <header>
         <div class="logo">
-            <h1><a href="/">Elitetiles</a></h1>
+            <h1><i class='bx bxs-home'></i><a href="/"> Elitetiles</a></h1>
         </div>
         <nav>
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
-                <li><a href="/products">Products</a></li>
+                <li><a href="{% url 'category_view' %}">Category</a></li>
                 <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
             </ul>
             <div class="right-icons">
                 <a href="/wishlist" class="icon"><i class='bx bxs-heart' style="font-size: large;color: aliceblue;"></i></a>
@@ -28,8 +27,8 @@
                 <div class="account-dropdown">
                     <a href="#" class="icon"><i class='bx bxs-user' style="font-size: large;color: aliceblue;"></i></a>
                     <div class="dropdown-content">
-                        <a href="{% url 'signin_view' %}">Signin</a>
-                        <a href="{% url 'signup_view' %}">Signup</a>
+                        <a href="{% url 'signin' %}">Signin</a>
+                        <a href="{% url 'signup' %}">Signup</a>
                     </div>
                 </div>
             </div>
@@ -65,7 +64,7 @@
         </div>
 
         <!-- Most Purchased Tiles Section -->
-        <div class="most-purchased">
+        <!-- <div class="most-purchased">
             <h3>Our Most Purchased Tiles</h3>
             <div class="tile-grid">
                 <div class="tile-card">
@@ -89,7 +88,7 @@
                     <p class="price">$18.00</p>
                 </div>
             </div>
-        </div>
+        </div> -->
     </section>
 
     <!-- Footer Section -->
